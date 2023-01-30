@@ -1,0 +1,6 @@
+tsconfig.json
+node_modules/
+dist/
+src/database/models/index.ts
+prisma/
+.github/
