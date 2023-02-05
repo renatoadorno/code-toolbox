@@ -4,31 +4,73 @@
     "node": true
   },
   "extends": [
-    "airbnb-base",
-    "airbnb-typescript/base",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2019,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint",
-    "prettier"
+    "@typescript-eslint"
   ],
   "rules": {
-    "consistent-return": "off",
-    "no-console": "off",
-    "@typescript-eslint/no-unused-vars": [
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": 0,
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": [
+      "off"
+    ],
+    "no-param-reassign": [
+      "off"
+    ],
+    "consistent-return": [
+      "off"
+    ],
+    "no-undef": [
+      "off"
+    ],
+    "max-len": [
       "error",
       {
-        "argsIgnorePattern": "^_",
-        "ignoreRestSiblings": true
+        "code": 100,
+        "ignoreComments": true,
+        "ignoreUrls": true
       }
+    ],
+    "max-params": [
+      "error",
+      4
+    ],
+    "max-lines": [
+      "error",
+      250
+    ],
+    "max-lines-per-function": [
+      "off"
+    ],
+    "complexity": [
+      "error",
+      15
+    ],
+    "object-curly-newline": [
+      "off"
+    ],
+    "import/no-extraneous-dependencies": [
+      "off"
     ]
   }
 }
