@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
-          <h1>👏 New App</h1>
+        <h1>👏 New App</h1>
       </main>
     </>
   );
