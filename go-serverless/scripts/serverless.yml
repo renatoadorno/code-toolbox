@@ -1,0 +1,24 @@
+service: app-teste-renato
+
+provider:
+  name: aws
+  architecture: arm64
+  runtime: provided.al2
+  region: us-west-2
+
+plugins:
+  - serverless-go-plugin
+
+functions:
+  app:
+    handler: ../cmd/events
+    memorySize: 128
+    timeout: 30
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+
+custom:
+  go:
+    supportedRuntimes: ["provided.al2"]
+    buildProvidedRuntimeAsBootstrap: true

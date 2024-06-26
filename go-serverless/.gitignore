@@ -1,0 +1,6 @@
+.serverless
+
+# golang output binary directory
+.bin
+
+scripts/node_modules/**
