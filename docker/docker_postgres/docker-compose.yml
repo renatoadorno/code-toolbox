@@ -28,8 +28,8 @@ services:
     ports:
       - 8081:80
     environment:
-      PGADMIN_DEFAULT_EMAIL: user@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: senha_teste
+      PGADMIN_DEFAULT_EMAIL: $PG_EMAIL
+      PGADMIN_DEFAULT_PASSWORD: $PG_PASSWORD
     volumes:
       - ./pgadmin:/var/lib # PERSISTIR DADOS DO BANCO
 
