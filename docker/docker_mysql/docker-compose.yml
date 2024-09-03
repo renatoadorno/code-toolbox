@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks:
+  default:
+
+services:
+  mysql-db:
+    container_name:  mysql-db
+    platform: linux/x86_64 # Necessario para mac-os
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+    ports:
+      - $DB_LOCAL_PORT:$DB_DOCKER_PORT
+    volumes:
+      - ./mysql-query:/docker-entrypoint-initdb.d/ # executa o todo o sql da pasta mysql-db quando inicia o container
+      - ./data:/var/lib/mysql # PERSISTIR DADOS DO BANCO
+    networks:
+      - default
+
+volumes:
+  db: # PERSISTIR DADOS DO BANCO
+    driver: local 

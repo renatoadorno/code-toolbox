@@ -1,0 +1,40 @@
+version: '3.8'
+
+networks:
+  default:
+
+services:
+  postgres-db:
+    container_name:  postgres-db
+    platform: linux/x86_64 # Necessario para mac-os
+    image: postgres:latest
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+    ports:
+      - ${DB_LOCAL_PORT:-5432}:5432
+    volumes:
+      - ./data:/var/lib/postgres # PERSISTIR DADOS DO BANCO
+    networks:
+      - default
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    depends_on:
+      - postgres-db
+    ports:
+      - 8081:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: senha_teste
+    volumes:
+      - ./pgadmin:/var/lib # PERSISTIR DADOS DO BANCO
+
+volumes:
+  db: # PERSISTIR DADOS DO BANCO
+    driver: local 
+  pgadmin: # PERSISTIR DADOS
+    driver: local 
