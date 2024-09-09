@@ -1,0 +1,6 @@
+dev:
+  docker-compose up dev 
+
+# this is a comment
+clear:
+  docker-compose down -v && docker-compose down --rmi all --volumes --remove-orphans
